@@ -11,9 +11,10 @@ Install composer packages:
   - docker run --rm -v $(pwd):/app composer:latest install
 
 Copy .env file:
- -  cp .env.example .env
+ -  cp .env.example .env (criar o arquivo .env com os dados do .env.example)
 
 Upload containers with docker-compose:
+ -  docker-compose build
  -  docker-compose up -d
 
 Install database:
