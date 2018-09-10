@@ -1,0 +1,11 @@
+<div  class="form-action-search">
+    O que você deseja ?
+    <form method="POST" action="/search/results">
+        <div class="input-group">
+            <input type="text" class="form-control" required value="{{ valueSearch|default('') }}" name="search" id="search" aria-label="Search">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Pesquisar</button>
+            </div>
+        </div>
+    </form>
+</div>

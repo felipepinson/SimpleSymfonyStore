@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<br>
+<div class="container">
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <strong>COD PEDIDO:{{ order.id }} - Detalhes da sua compra:  </strong>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>Nome Completo: </strong> {{order.consumer.name}} </li>
+                                <li class="list-group-item">
+                                <strong>E-mail: </strong> <a href="">{{order.consumer.email}}</a></li>
+                            <li class="list-group-item">
+                                <strong>CPF: </strong>{{order.consumer.cpf}}</li>
+                            <li class="list-group-item">
+                                <strong>Celular: </strong>{{order.consumer.phone}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">Produtos</div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Produto</th>
+                                            <th class="text-center">Quantidade</th>
+                                            <th class="text-right">Preço Unitário</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in order.orderProduct %}
+                                        <tr>
+                                            <td> 
+                                                <a href="/{{item.product.id}}/details">
+                                                    {{ item.product.name }}
+                                                </a>
+                                            </td>
+                                            <td class="text-center">{{ item.quantity }}</td>
+                                            <td class="text-right">{{ item.unitPrice }}<td>
+                                        </tr>
+                                        {% endfor %}
+                                        <tr>
+                                            <td class="text-right" colspan="3">
+                                                <strong>TOTAL DA COMPRA: {{order.total}}</strong>
+                                              
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">Endereço de Entrega</div>
+                            <div class="card-body">
+                                <p>
+                                    <strong>CEP: </strong>{{ order.orderAddress.zipCode }}</p>
+                                </p>
+                                <p>
+                                    <strong>ENDEREÇO: </strong>{{ order.orderAddress.street }}</p>
+                                </p>
+                                <p>
+                                    <strong>NUMERO: </strong>{{ order.orderAddress.number }}</p>
+                                </p>
+                                <p>
+                                    <strong>COMPLEMENTO: </strong>{{ order.orderAddress.complement }}</p>
+                                </p>
+                                <p>
+                                    <strong>BAIRRO: </strong>{{ order.orderAddress.neighbourhood }}</p>
+                                </p>
+                                <p>
+                                    <strong>CIDADE/UF: </strong>{{ order.orderAddress.city }}/{{ order.orderAddress.state }}</p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+
+
+

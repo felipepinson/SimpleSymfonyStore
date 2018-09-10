@@ -1,0 +1,30 @@
+parameters:
+    # Adds a fallback DATABASE_URL if the env var is not set.
+    # This allows you to run cache:warmup even if your
+    # environment variables are not available yet.
+    # You should not need to change this value.
+    env(DATABASE_URL): ''
+
+doctrine:
+    dbal:
+        driver: '%env(DB_DRIVER)%'
+        user: '%env(DB_USER)%'
+        password: '%env(DB_PASSWORD)%'
+        host: '%env(DB_HOST)%'
+        port: 3306
+        dbname: '%env(DB_NAME)%'
+        charset: UTF8
+        options:
+                1002: "SET NAMES 'UTF8' COLLATE 'utf8_unicode_ci'"
+
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App

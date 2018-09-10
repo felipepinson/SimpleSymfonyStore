@@ -1,0 +1,42 @@
+body {
+  padding-top: 54px;
+}
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.card {
+  height: 100%;
+}
+
+.details-container > .row > .img-details > .card > img {
+  max-height: 500px;
+}
+
+.ico-cart {
+  width: 40px;
+}
+
+.qtd-cart {
+  color: #ffffff;
+  width: 100px;
+}
+
+.btqqtdcart {
+  margin: 10px;
+}
+
+.form-action-search {
+  padding-top: 30px;
+}
+
+.totalizador-cart {
+  background: #cccccc;
+}
+
+.btn-proximo-passo-cart {
+  position: relative;
+  float: right;
+}

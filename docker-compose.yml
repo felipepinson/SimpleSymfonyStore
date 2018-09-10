@@ -1,0 +1,32 @@
+version: '3.5'
+services:
+    sstore:
+        build:
+          context: ./
+          dockerfile: ./Dockerfile
+        container_name: "mysymplestore"
+        ports:
+          - 8080:8080
+        volumes:
+          - "./:/usr/src/app"
+        depends_on:
+          - "db"
+        networks:
+            ss-network:
+                ipv4_address: "172.8.1.5"
+    db:
+        image: mysql:5.6
+        environment:
+          - "MYSQL_ROOT_PASSWORD=@2018"
+          - "MYSQL_DATABASE=mystore"
+        networks:
+            ss-network:
+                ipv4_address: "172.8.1.2"
+        
+networks:
+    ss-network:
+        driver: "bridge"
+        ipam:
+            config:
+                - subnet: "172.8.0.0/16"
+

@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Jumbotron Header -->
+      <header class="my-4">
+         <h1 class="display-3">Seja Bem vindo !.</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+        {% include 'formSearch.twig' %}
+        <hr>
+        {% if arrayProducts|length > 0 %}
+            <div class="text-center">
+                {% for cat in arrayCategory %}
+                    <a href="/search/results/category/{{ cat.id }}" class="btn btn-success">{{ cat.des }}</a>
+                {% endfor %}
+                    <a href="/" class="btn btn-success">Todas</a>      
+            </div>
+        {% endif %}
+      </header>
+
+      <!-- Page Features -->
+      <div class="row text-center">
+        {% for product in arrayProducts %}
+            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="\images\{{product.image}}" alt="">
+                <div class="card-body">
+                    <h4 class="card-title"> {{product.name}} </h4>
+                    <p class="card-text">{{product.des}}</p>
+                </div>
+                <div class="card-footer">
+                    R$ {{product.price}}
+                </div>
+                <div class="card-footer">
+                    <a href="/{{product.id}}/details" class="btn btn-primary"> Detalhes </a>
+
+                    {% set isIntheCart = false %}
+                    {% for itemcart in app.session.get('myCartSession') %}
+                        {% if itemcart['id'] == product.id  %}
+                            {% set isIntheCart = true %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if isIntheCart  %}
+                        <a href="#" onclick="msgItemCart()" class="btn btn-success"> Comprar</a>
+                    {% else %} 
+                        <a href="/cart-add/{{product.id}}/home" class="btn btn-success"> Comprar</a>
+                    {% endif %}
+
+                </div>
+            </div>
+            </div>
+        {% else %}
+            <div class="col-lg-12 col-md-12 mb-4">
+                <div class="card">
+                    <h4>Ops:<br>Nenhum produdo disponivel no momento !</h4>
+                </div>
+            </div>
+        {% endfor %}
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->
+{% endblock %}
+
+
+
+

@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container details-container">
+      <div class="row">
+        <div class="col-lg-12 img-details">
+          <div class="card mt-4">
+            <div class="card-body">
+              <h3 class="card-title">Meus Pedidos</h3>
+                <div class="text-uppercase box-title-grid-credenciados">                    
+                    {% if orders|length == 0 %}
+                        <hr>
+                        <div class="text-center">
+                            <img src="\images\sad-face.jpg" class="ico-cart">
+                                <br><br>
+                                    Seu carrinho de compras esta vazio até o momento,
+                                <br><br>
+                            <a href="/" class="btn btn-primary">
+                            <i class="fa fa-arrow-left"></i>
+                            Clique aqui para voltar as compras
+                            </a>                        
+                        </div>
+                    {% else %}
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Número</th>
+                                    <th>Data</th>
+                                    <th>Valor</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% set valorTotal = 0 %}
+                                {% for item in orders %}
+                                    <tr>
+                                        <td class="align-middle">
+                                            {{ item.id }}
+                                        </td>
+                                        <td vertical-align="center">
+                                            <span class="text-uppercase">{{item.orderDate}}</span>
+                                        </td>
+                                        <td>
+                                            {{item.total}}
+                                            {% set valorTotal = valorTotal + item.total  %}
+                                        </td>
+                                        <td>
+                                            <a href="/order/{{ item.id }}/details" target="_blank" class="item-remove">
+                                                <i class="fa fa-search-plus"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                    <tr class="totalizador-cart">
+                                        <td colspan="2" class="text-right">
+                                        <b>Total pedidos:</b>
+                                        </td>
+                                        <td>
+                                            {{valorTotal}}
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    {% endif %}
+                </div>  
+                <a href="/" class="btn btn-primary">
+                <i class="fa fa-arrow-left"></i>
+                Clique aqui para voltar as compras
+                </a>
+        </div>
+    </div>
+    
+</div>
+    <!-- /.container -->
+{% endblock %}
