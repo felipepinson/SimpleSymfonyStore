@@ -1,29 +1,29 @@
 # SimpleSymfonyStore
 
 Installation
-    Clone the project:
-        git clone https://github.com/felipepinson/SimpleSymfonyStore.git
+Clone the project:
+ -  git clone https://github.com/felipepinson/SimpleSymfonyStore.git
 
 Access the project folder:
-    cd SimpleSymfonyStore
+  - cd SimpleSymfonyStore
 
 Install composer packages:
-    docker run --rm -v $(pwd):/app composer:latest install
+  - docker run --rm -v $(pwd):/app composer:latest install
 
 Copy .env file:
-    cp .env.example .env
+ -  cp .env.example .env
 
 Upload containers with docker-compose:
-    docker-compose up -d
+ -  docker-compose up -d
 
 Install database:
-    docker exec -ti mysymplestore php bin/console doctrine:schema:update --force
+ -  docker exec -ti mysymplestore php bin/console doctrine:schema:update --force
 
 Generate fake data:
-    docker exec -ti mysymplestore php bin/console doctrine:fixtures:load
+ -  docker exec -ti mysymplestore php bin/console doctrine:fixtures:load
 
 Run unit tests:
-    docker exec -ti mysymplestore php ./bin/phpunit tests/Unit
+ -  docker exec -ti mysymplestore php ./bin/phpunit tests/Unit
 
 Access environment: http://172.8.1.5:8080
 
@@ -39,4 +39,4 @@ About:
         phpunit:phpunit
 
 Author
-    Felipe Tadeu Pinson Machado - felipepinson@gmail.com
+        Felipe Tadeu Pinson Machado - felipepinson@gmail.com
