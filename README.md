@@ -1,34 +1,34 @@
 # SimpleSymfonyStore
 
-Installation
+ - Installation
 Clone the project:
 git clone https://github.com/felipepinson/SimpleSymfonyStore.git
 
-Access the project folder:
+ - Access the project folder:
 cd SimpleSymfonyStore
 
-Install composer packages:
+ - Install composer packages:
 docker run --rm -v $(pwd):/app composer:latest install
 
-Copy .env file:
+ - Copy .env file:
 cp .env.example .env
 
-Upload containers with docker-compose:
+ - Upload containers with docker-compose:
 docker-compose up -d
 
-Install database:
+ - Install database:
 docker exec -ti mysymplestore php bin/console doctrine:schema:update --force
 
-Generate fake data:
+ - Generate fake data:
 docker exec -ti mysymplestore php bin/console doctrine:fixtures:load
 
-Run unit tests:
+ - Run unit tests:
 docker exec -ti mysymplestore php ./bin/phpunit tests/Unit
 
 Access your local environment: http://172.8.1.5:8080
 About
 
-Requirements
+ - Requirements
 This app works with PHP (^7.0)
 Docker (^17.05.0-ce)
 docker-compose (^1.20.1)
