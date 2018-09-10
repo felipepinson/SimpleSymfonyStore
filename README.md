@@ -33,6 +33,7 @@ About:
         This app works with PHP (^7.0)
         Docker (^17.05.0-ce)
         docker-compose (^1.20.1)
+         - docker-compose.yml - version:3.5
         Docker images
         mysql:5.6
         composer:latest
