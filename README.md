@@ -1,40 +1,42 @@
 # SimpleSymfonyStore
 
- - Installation
-Clone the project:
-git clone https://github.com/felipepinson/SimpleSymfonyStore.git
+Installation
+    Clone the project:
+        git clone https://github.com/felipepinson/SimpleSymfonyStore.git
 
- - Access the project folder:
-cd SimpleSymfonyStore
+Access the project folder:
+    cd SimpleSymfonyStore
 
- - Install composer packages:
-docker run --rm -v $(pwd):/app composer:latest install
+Install composer packages:
+    docker run --rm -v $(pwd):/app composer:latest install
 
- - Copy .env file:
-cp .env.example .env
+Copy .env file:
+    cp .env.example .env
 
- - Upload containers with docker-compose:
-docker-compose up -d
+Upload containers with docker-compose:
+    docker-compose up -d
 
- - Install database:
-docker exec -ti mysymplestore php bin/console doctrine:schema:update --force
+Install database:
+    docker exec -ti mysymplestore php bin/console doctrine:schema:update --force
 
- - Generate fake data:
-docker exec -ti mysymplestore php bin/console doctrine:fixtures:load
+Generate fake data:
+    docker exec -ti mysymplestore php bin/console doctrine:fixtures:load
 
- - Run unit tests:
-docker exec -ti mysymplestore php ./bin/phpunit tests/Unit
+Run unit tests:
+    docker exec -ti mysymplestore php ./bin/phpunit tests/Unit
 
-Access your local environment: http://172.8.1.5:8080
-About
+Access environment: http://172.8.1.5:8080
 
- - Requirements
-This app works with PHP (^7.0)
-Docker (^17.05.0-ce)
-docker-compose (^1.20.1)
-Docker images
-mysql:5.6
-composer:latest
-phpunit:phpunit
+About:
+
+    Requirements
+        This app works with PHP (^7.0)
+        Docker (^17.05.0-ce)
+        docker-compose (^1.20.1)
+        Docker images
+        mysql:5.6
+        composer:latest
+        phpunit:phpunit
+
 Author
-Felipe Tadeu Pinson Machado - felipepinson@gmail.com
+    Felipe Tadeu Pinson Machado - felipepinson@gmail.com
